@@ -1,0 +1,120 @@
+/* OTT default color themes */
+a {
+  color: #118c4e;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #094828;
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: thin dotted #094828;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+	background-color: #f5f5f5;
+	border-color: #e5e5e5;
+}
+
+.panel-results {
+	margin-top: 5px;
+}
+
+.jumbotron {
+  background-color: #d0e9c6;  
+}
+
+/* Custom page footer */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 40px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #f5f5f5;
+  border-color: #e5e5e5;
+}
+
+.footer p {
+  margin-top: 10px;
+}
+
+/* Bootstrap classes taken from http://getbootstrap.com/assets/css/docs.css */
+.highlight {
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  background-color: #f5f5f5;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+}
+.highlight pre {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+  border: 0;
+}
+
+.bs-callout {
+  padding:20px;
+  margin:20px 0;
+  border:1px solid #eee;
+  border-left-width:5px;
+  border-radius:3px
+}
+.bs-callout h4 {
+  margin-top:0;
+  margin-bottom:5px
+}
+.bs-callout p:last-child {
+  margin-bottom:0
+}
+.bs-callout code {
+  border-radius:3px
+}
+.bs-callout+.bs-callout {
+  margin-top:-5px
+}
+.bs-callout-danger {
+  border-left-color:#d9534f
+}
+.bs-callout-danger h4 {
+  color:#d9534f
+}
+.bs-callout-warning {
+  border-left-color:#f0ad4e
+}
+.bs-callout-warning h4 {
+  color:#f0ad4e
+}
+.bs-callout-info {
+  border-left-color:#5bc0de
+}
+.bs-callout-info h4 {
+  color:#5bc0de
+}
+.bs-callout-primary {
+  border-left-color:#337ab7
+}
+.bs-callout-primary h4 {
+  color:#337ab7
+}

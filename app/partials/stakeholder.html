@@ -1,0 +1,30 @@
+<div class="container">
+
+<div class="panel panel-success panel-results" ng-show="report.document">
+  <div class="panel-heading" ng-bind-html="report.document._source.subject">
+  </div>
+    <table class="table table-condensed table-responsive">
+      <tr><td>From:</td><td ng-bind="report.document._source.from_name"></a></td></tr>
+      <tr><td>To:</td><td ng-bind="report.document._source.to"></td></tr>
+      <tr ng-show="report.document._source.cc"><td>Cc:</td><td ng-bind="report.document._source.cc"></td></tr>
+      <tr><td>Subject:</td><td ng-bind-html="report.document._source.subject"></td></tr>
+      <tr><td>Size:</td><td ng-bind="report.document._source.size|bytes"></td></tr>
+    </table>
+  <div class="panel-body">
+    <div class="highlighta">
+      <p ng-bind-html="report.document._source.content"></p>
+    </div>
+  </div>
+  <div class="panel-footer" ng-show="report.total">
+    About {{report.total|number}} result{{report.total>1?'s':''}} ({{report.took}} seconds)
+  </div>
+</div>
+
+<div class="ng-hide" ng-show="found">
+  <div class="bs-callout bs-callout-danger">
+    <h4>404 Not Found</h4>
+    <p>This is not the record you are looking for.</p>
+  </div>
+</div>
+
+</div>

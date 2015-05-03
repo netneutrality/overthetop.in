@@ -1,0 +1,11 @@
+{
+  "name": "ottapp",
+  "description": "A web app to display OTT responses.",
+  "devDependencies": {
+        "phantomjs" : "*",
+        "karma" : "*",
+        "karma-junit-reporter" : "*",    
+        "karma-jasmine" : "*",
+        "karma-ng-scenario" : "*"
+    }
+}

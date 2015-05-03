@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ottapp">
+<head>
+  <title>Over The Top</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" media="screen">
+  <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css" media="screen">
+  <link rel="stylesheet" href="css/ott.css?v=0.0.8" media="screen">
+  <link rel="icon" type="image/png" href="images/ott.png">
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+  <script src="bower_components/elasticsearch/elasticsearch.angular.js"></script>
+  <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+  <script src="bower_components/crypto-js/crypto-js.js"></script>
+  <script src="js/app.js?v=0.0.1"></script>
+  <script src="js/config.js?v=0.0.1"></script>
+  <script src="js/controllers.js?v=0.0.1"></script>
+  <script src="js/services.js?v=0.0.3"></script>
+  <script src="js/filters.js?v=0.0.1"></script>
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-controller="SearchController">
+
+<nav class="navbar navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/">Over The Top</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <form class="navbar-form navbar-right" role="form">
+        <div class="form-group">
+          <input type="text" placeholder="Name" class="form-control" ng-model="query.name">
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Email" class="form-control" ng-model="query.email">
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Comments" class="form-control" ng-model="query.content">
+        </div>
+        <button type="submit" class="btn btn-success" ng-click="search()">Search</button>
+      </form>
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
+
+<div ng-view></div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <p class="text-muted col-md-6 text-left">&copy; 2015 Over The Top | <a href="mailto:feedback@overthetop.in">Feedback</a> | <a href="https://twitter.com/overthetop_in" target="_blank">@overthetop_in</a></p>
+      <p class="text-muted col-md-6 text-right">#SaveTheInternet</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

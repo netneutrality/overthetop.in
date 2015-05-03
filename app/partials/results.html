@@ -1,0 +1,40 @@
+<div class="container">
+
+<div class="panel panel-success panel-results ng-hide" ng-show="results.hits">
+  <div class="panel-heading">About {{results.total|number}} result{{results.total>1?'s':''}} ({{results.took}} seconds)</div>
+  <div class="panel-body">
+    <div class="row">
+    <table class="table table-hover table-striped table-condensed table-responsive">
+      <thead>
+        <tr>
+      	  <th class="col-md-1">#</th>
+          <th class="col-md-1">Date</th>
+          <th class="col-md-1">From</th>
+          <th class="col-md-6">Snippet</th>
+          <th class="col-md-1">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="result in results.hits">
+          <td class="col-md-1"><p ng-bind="$index+1"></p></td>
+          <td class="col-md-1"><p ng-bind="result._source.date"></p></td>
+          <td class="col-md-1"><p ng-bind="result._source.from_name"></p></td>
+          <td class="col-md-6">
+            <div ng-switch="result.hasOwnProperty('highlight')">
+              <div ng-switch-when="true">
+                <p ng-if="result.highlight.hasOwnProperty('text')" ng-bind-html="result.highlight.text[0]|tbsp"></p>
+              </div>
+              <div ng-switch-default>
+                <p ng-bind-html="result._source.snippet|tbsp"></p>
+              </div>
+            </div>
+          </td>
+          <td class="col-md-1"><a ng-href="#/stakeholder/{{result._id}}">View &rarr;</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+</div>
