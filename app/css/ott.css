@@ -118,3 +118,9 @@ body {
 .bs-callout-primary h4 {
   color:#337ab7
 }
+@media (max-width:767px) {
+  .jumbotron {
+    margin-top: 180px;
+  }
+}
+
