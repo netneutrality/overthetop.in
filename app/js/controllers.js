@@ -45,7 +45,7 @@ ottappControllers
                     type: 'stakeholder',
                     body: {
                         _source: {
-                            include: ['from_name', 'from', 'subject', 'snippet','date','size']
+                            include: ['from_name', 'from', 'subject', 'snippet','date','size','campaigns']
                         },
                         query: {
                             bool: {
