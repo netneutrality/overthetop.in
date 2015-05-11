@@ -54,7 +54,7 @@ ottappServices.factory('esQueryBuilder', function(){
                         domains: {
                             terms: {
                                 field: "from_domain",
-                                size: 10000
+                                size: 20000
                             }
                         }
                     }
