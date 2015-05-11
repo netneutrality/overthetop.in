@@ -5,13 +5,15 @@
     <table class="table table-condensed table-responsive">
       <thead>
         <tr>
-          <th class="col-md-1">Domain</th>
-          <th class="col-md-1">Count</th>
+          <th class="col-md-1">#</th>
+          <th class="col-md-1">Stakeholder's domain</th>
+          <th class="col-md-1">Mails sent</th>
         </tr>
       </thead>
       <tr ng-repeat="domain in report.domains">
-        <td class="col-md-1" ng-bind="domain.key"></td>
-        <td class="col-md-1" ng-bind="domain.doc_count|number"></td>
+        <td class="col-md-1"><p ng-bind="$index+1"></p></td>
+        <td class="col-md-1"><p ng-bind="domain.key"></p></td>
+        <td class="col-md-1"><p ng-bind="domain.doc_count|number"></p></td>
       </tr>
     </table>
   <div class="panel-footer" ng-show="report.total">
