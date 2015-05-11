@@ -45,7 +45,6 @@ ottappServices.factory('esQueryBuilder', function(){
         getDomainReportParams: function(index, target) {
             var q = {
                 index: index,
-                size: 100,
                 type: target,
                 query_cache: true,
                 search_type: 'count',
