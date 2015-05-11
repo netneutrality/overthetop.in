@@ -34,11 +34,32 @@ ottappServices.factory('esQueryBuilder', function(){
         },
         getDocumentQueryParams: function(index, target, id) {
             var q = {
-                    index: index,
-                    size: 1,
-                    type: target,
-                    q: '_id:' + id
-                };
+                index: index,
+                size: 1,
+                type: target,
+                query_cache: true,
+                q: '_id:' + id
+            };
+            return q;
+        },
+        getDomainReportParams: function(index, target) {
+            var q = {
+                index: index,
+                size: 100,
+                type: target,
+                query_cache: true,
+                search_type: 'count',
+                body: {
+                    aggs: {
+                        domains: {
+                            terms: {
+                                field: "from_domain",
+                                size: 1000
+                            }
+                        }
+                    }
+                }
+            };
             return q;
         },
     }
@@ -55,6 +76,9 @@ ottappServices.factory('esResultBuilder', function(){
                 d._source.content += hit._source.content.replace('<', '&lt;');
             }
             return d;
+        },
+        getDomains: function(res) {
+            return res.aggregations.domains.buckets;
         }
     }
     return esResult;

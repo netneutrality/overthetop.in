@@ -31,7 +31,12 @@ ottapp.config(
           templateUrl: 'partials/help.html?v=0.0.1',
     });
 
-    $routeProvider.when('/stakeholder/:id', {
+    $routeProvider.when('/report/domains', {
+          templateUrl: 'partials/domains.html?v=0.0.1',
+          controller: 'DomainReportController'
+    });
+
+        $routeProvider.when('/stakeholder/:id', {
           templateUrl: 'partials/stakeholder.html?v=0.0.1',
           controller: 'StakeholderController'
     });

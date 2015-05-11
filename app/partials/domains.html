@@ -1,0 +1,21 @@
+<div class="container">
+
+<div class="panel panel-success panel-results" ng-show="report.domains">
+  <div class="panel-heading">Domain report</div>
+    <table class="table table-condensed table-responsive">
+      <thead>
+        <tr>
+          <th class="col-md-1">Domain</th>
+          <th class="col-md-1">Count</th>
+        </tr>
+      </thead>
+      <tr ng-repeat="domain in report.domains">
+        <td class="col-md-1" ng-bind="domain.key"></td>
+        <td class="col-md-1" ng-bind="domain.doc_count|number"></td>
+      </tr>
+    </table>
+  <div class="panel-footer" ng-show="report.total">
+    About {{report.total|number}} result{{report.total>1?'s':''}} ({{report.took}} seconds)
+  </div>
+</div>
+</div>

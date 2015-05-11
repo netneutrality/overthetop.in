@@ -32,6 +32,24 @@ ottappControllers
     );
 
 ottappControllers
+    .controller('DomainReportController',
+        ['$scope', 'esClient', 'esFactory', 'esQueryBuilder', 'esResultBuilder',
+        function($scope, esClient, esFactory, esQueryBuilder, esResultBuilder) {
+            esClient.search(
+                esQueryBuilder.getDomainReportParams('ottprod', 'stakeholder')
+            )
+            .then(function(res) {
+                var report     = {};
+                report.domains = esResultBuilder.getDomains(res);
+                report.found   = res.hits.hits.length == 0;
+                report.took    = res.took / 1000;
+                report.total   = res.hits.total;
+                $scope.report  = report;
+            });
+        }]
+    );
+
+ottappControllers
     .controller('SearchController',        
         ['$scope', '$location', 'esClient', 'esFactory', 'esQueryBuilder',
         function($scope, $location, esClient, esFactory, esQueryBuilder) {
