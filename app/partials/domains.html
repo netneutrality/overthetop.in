@@ -2,19 +2,35 @@
 
 <div class="panel panel-success panel-results" ng-show="report.domains">
   <div class="panel-heading">Email domains</div>
-    <table class="table table-condensed table-responsive">
+    <table st-table="report.displayed_domains" st-safe-src="report.domains" class="table table-condensed table-responsive">
       <thead>
         <tr>
           <th class="col-md-1">#</th>
           <th class="col-md-1">Sent via</th>
           <th class="col-md-1">Mails sent</th>
+          <th class="col-md-1">%</th>
+          <th class="col-md-1">Visit website</th>
+        </tr>
+        <tr>
+          <th class="col-md-1"></th>
+          <th class="col-md-1"><input st-search="key" st-delay="300" class="input-sm form-control" placeholder="Filter by domain name" type="text"/></th>
+          <th class="col-md-1" colspan="3"></th>
         </tr>
       </thead>
-      <tr ng-repeat="domain in report.domains">
-        <td class="col-md-1"><p ng-bind="$index+1"></p></td>
-        <td class="col-md-1"><p ng-bind="domain.key"></p></td>
+      <tr ng-repeat="domain in report.displayed_domains">
+        <td class="col-md-1"><p ng-bind="domain.id+1"></p></td>
+        <td class="col-md-1"><a ng-href="#/domains/{{domain.key}}" ng-bind="domain.key"></p></td>
         <td class="col-md-1"><p ng-bind="domain.doc_count|number"></p></td>
+        <td class="col-md-1"><p ng-bind="domain.doc_count/report.total*100|number:2"></p></td>
+        <td class="col-md-1"><a ng-href="http://{{domain.key}}" target="_blank">Visit &rarr;</a></td>
       </tr>
+      <tfoot>
+        <tr>
+          <td colspan="5" class="text-center">
+            <div st-pagination st-items-by-page="50" st-displayed-pages="8"></div>
+          </td>
+        </tr>
+      </tfoot>
     </table>
   <div class="panel-footer" ng-show="report.total">
     About {{report.total|number}} result{{report.total>1?'s':''}} ({{report.took}} seconds)

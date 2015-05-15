@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-var ottappControllers = angular.module('ottapp.controllers', ['ngResource']);
+var ottappControllers = angular.module('ottapp.controllers', ['ngResource', 'smart-table']);
 
 ottappControllers
     .controller('HomeController',
@@ -32,7 +32,7 @@ ottappControllers
     );
 
 ottappControllers
-    .controller('DomainReportController',
+    .controller('DomainController',
         ['$scope', 'esClient', 'esFactory', 'esQueryBuilder', 'esResultBuilder',
         function($scope, esClient, esFactory, esQueryBuilder, esResultBuilder) {
             esClient.search(
@@ -41,6 +41,7 @@ ottappControllers
             .then(function(res) {
                 var report     = {};
                 report.domains = esResultBuilder.getDomains(res);
+                report.displayed_domains = [].concat(report.domains);
                 report.found   = res.hits.hits.length == 0;
                 report.took    = res.took / 1000;
                 report.total   = res.hits.total;

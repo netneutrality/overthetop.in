@@ -32,11 +32,14 @@ ottapp.config(
     });
 
     $routeProvider.when('/report/domains', {
+        redirectTo: '/domains'
+    });
+    $routeProvider.when('/domains', {
           templateUrl: 'partials/domains.html?v=0.0.1',
-          controller: 'DomainReportController'
+          controller: 'DomainController'
     });
 
-        $routeProvider.when('/stakeholder/:id', {
+    $routeProvider.when('/stakeholder/:id', {
           templateUrl: 'partials/stakeholder.html?v=0.0.1',
           controller: 'StakeholderController'
     });

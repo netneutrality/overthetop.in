@@ -6,8 +6,8 @@ var ottappServices = angular.module('ottapp.services', ['elasticsearch', 'ngReso
 
 ottappServices.service('esClient', function (esFactory){
     return esFactory({
-        host: 'https://www.overthetop.in/api',
-        apiVersion: '1.3',
+        host: 'dell-per720-1.swcert.cee.pnq.redhat.com:9200',
+        apiVersion: '1.5',
         log: 'trace',
         size: 100,
     });
@@ -77,6 +77,9 @@ ottappServices.factory('esResultBuilder', function(){
             return d;
         },
         getDomains: function(res) {
+            for (var i=0; i < res.aggregations.domains.buckets.length; i++) {
+                res.aggregations.domains.buckets[i].id = i;
+            }
             return res.aggregations.domains.buckets;
         }
     }
