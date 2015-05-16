@@ -6,7 +6,7 @@ var ottappServices = angular.module('ottapp.services', ['elasticsearch', 'ngReso
 
 ottappServices.service('esClient', function (esFactory){
     return esFactory({
-        host: 'dell-per720-1.swcert.cee.pnq.redhat.com:9200',
+        host: 'https://www.overthetop.in/api',
         apiVersion: '1.5',
         log: 'trace',
         size: 100,
