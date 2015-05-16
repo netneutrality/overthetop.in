@@ -51,6 +51,27 @@ ottappControllers
     );
 
 ottappControllers
+    .controller('DomainListController',
+        ['$scope', '$routeParams', 'esClient', 'esFactory', 'esQueryBuilder', 'esResultBuilder',
+        function($scope, $routeParams, esClient, esFactory, esQueryBuilder, esResultBuilder) {
+            esClient.search(
+                esQueryBuilder.getDomainListParams('ottprod', 'stakeholder', $routeParams.id)
+            )
+            .then(function(res) {
+                var report    = {};
+                report.from_domain = $routeParams.id;
+                report.responses = esResultBuilder.getDomainList(res);
+                report.displayed_responses = [].concat(report.responses);
+                report.found  = res.hits.hits.length == 0;
+                report.took   = res.took / 1000;
+                report.total  = res.hits.total;
+                $scope.report = report;
+            });
+        }]
+    );
+
+
+ottappControllers
     .controller('SearchController',        
         ['$scope', '$location', 'esClient', 'esFactory', 'esQueryBuilder',
         function($scope, $location, esClient, esFactory, esQueryBuilder) {

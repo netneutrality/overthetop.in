@@ -38,6 +38,10 @@ ottapp.config(
           templateUrl: 'partials/domains.html?v=0.0.1',
           controller: 'DomainController'
     });
+    $routeProvider.when('/domains/:id', {
+          templateUrl: 'partials/domains-list.html?v=0.0.1',
+          controller: 'DomainListController'
+    });
 
     $routeProvider.when('/stakeholder/:id', {
           templateUrl: 'partials/stakeholder.html?v=0.0.1',

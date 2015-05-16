@@ -61,6 +61,28 @@ ottappServices.factory('esQueryBuilder', function(){
             };
             return q;
         },
+        getDomainListParams: function(index, target, id) {
+            var q = {
+                index: index,
+                size: 10000,
+                type: target,
+                query_cache: true,
+                body: {
+                    _source: {
+                        include: ['from_name', 'subject', 'date', 'size', 'campaigns']
+                    },
+                    query: {
+                        filtered: {
+                            filter: {
+                                term: { from_domain: id}
+                            }
+                        }
+                    }
+                }
+            };
+            return q;
+        },
+        
     }
     return esQuery;
 });
@@ -68,19 +90,23 @@ ottappServices.factory('esQueryBuilder', function(){
 ottappServices.factory('esResultBuilder', function(){
     var esResult = {
         getContent: function(res) {
-            var d = res.hits.hits[0];
-            for (var i = 1; i < res.hits.hits.length; i++)
-            {
-                var hit = res.hits.hits[i];
-                d._source.content += hit._source.content.replace('<', '&lt;');
-            }
-            return d;
+            return res.hits.hits[0];
         },
         getDomains: function(res) {
             for (var i=0; i < res.aggregations.domains.buckets.length; i++) {
                 res.aggregations.domains.buckets[i].id = i;
             }
             return res.aggregations.domains.buckets;
+        },
+        getDomainList: function(res) {
+            var responses = [];
+            for (var i = 0; i < res.hits.hits.length; i++) {
+                var response = res.hits.hits[i]._source;
+                response._id = res.hits.hits[i]._id;
+                response.idx = i;
+                responses.push(response);
+            }
+            return responses;
         }
     }
     return esResult;
