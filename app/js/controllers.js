@@ -36,7 +36,7 @@ ottappControllers
         ['$scope', 'esClient', 'esFactory', 'esQueryBuilder', 'esResultBuilder',
         function($scope, esClient, esFactory, esQueryBuilder, esResultBuilder) {
             esClient.search(
-                esQueryBuilder.getDomainReportParams('ottprod', 'stakeholder')
+                esQueryBuilder.getDomainParams('ottprod', 'stakeholder')
             )
             .then(function(res) {
                 var report     = {};

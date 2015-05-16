@@ -42,7 +42,7 @@ ottappServices.factory('esQueryBuilder', function(){
             };
             return q;
         },
-        getDomainReportParams: function(index, target) {
+        getDomainParams: function(index, target) {
             var q = {
                 index: index,
                 type: target,
