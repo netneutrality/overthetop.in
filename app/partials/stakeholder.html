@@ -1,5 +1,12 @@
 <div class="container">
 
+  <ol class="breadcrumb">
+    <li><a href="#/">Home</a></li>
+    <li><a href="#/domains">Domains</a></li>
+    <li><a href="#/domains/{{report.document._source.from_domain}}" ng-bind="report.document._source.from_domain"></a></li>
+    <li class="active" ng-bind="report.document._id"></li>
+  </ol>
+
 <div class="panel panel-success panel-results" ng-show="report.document">
   <div class="panel-heading" ng-bind-html="report.document._source.subject"></div>
     <table class="table table-condensed table-responsive">

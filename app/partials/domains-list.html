@@ -1,5 +1,11 @@
 <div class="container">
 
+  <ol class="breadcrumb">
+    <li><a href="#/">Home</a></li>
+    <li><a href="#/domains">Domains</a></li>
+    <li class="active" ng-bind="report.from_domain"></li>
+  </ol>
+  
 <div class="panel panel-success panel-results" ng-show="report.responses">
   <div class="panel-heading">Responses sent via {{report.from_domain}}</div>
     <table st-table="report.displayed_responses" st-safe-src="report.responses" class="table table-condensed table-responsive">
@@ -20,9 +26,9 @@
         </tr>
       </thead>
       <tr ng-repeat="response in report.displayed_responses">
-        <td class="col-md-1"><a ng-href="#/stakeholder/{{response._id}}" ng-bind="response.idx+1"></a></td>
-        <td class="col-md-2"><a ng-href="#/stakeholder/{{response._id}}" ng-bind="response.from_name"></a></td> 
-        <td class="col-md-5"><a ng-href="#/stakeholder/{{response._id}}" ng-bind="response.subject"></a></td>
+        <td class="col-md-1"><p ng-bind="response.idx+1"></p></td>
+        <td class="col-md-2"><a ng-href="#/stakeholder/{{response._id}}" ng-bind="response.from_name ? response.from_name : '(No name)'"></a></td> 
+        <td class="col-md-5"><a ng-href="#/stakeholder/{{response._id}}" ng-bind="response.subject ? response.subject : '(No subject)'"></a></td>
         <td class="col-md-2"><p ng-bind="response.date"></p></td>
         <td class="col-md-1"><p ng-bind="response.size|bytes"></p></td>
         <td class="col-md-1"><p ng-bind="response.campaigns" class="label label-success"></p></td>
