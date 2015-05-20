@@ -1,5 +1,10 @@
 <div class="container">
 
+  <ol class="breadcrumb">
+    <li><a href="#/">Home</a></li>
+    <li class="active">Search</li>
+  </ol>
+
 <div class="panel panel-success panel-results ng-hide" ng-show="results.hits">
   <div class="panel-heading">About {{results.total|number}} result{{results.total>1?'s':''}} ({{results.took}} seconds)</div>
   <div class="panel-body">
