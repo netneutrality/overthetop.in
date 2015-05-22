@@ -11,22 +11,22 @@
       <thead>
         <tr>
           <th class="col-md-1">#</th>
-          <th class="col-md-1">Sent via</th>
-          <th class="col-md-1">Mails sent</th>
-          <th class="col-md-1">%</th>
+          <th class="col-md-4">Sent via</th>
+          <th class="col-md-3">Mails sent</th>
+          <th class="col-md-3">%</th>
           <th class="col-md-1">Visit website</th>
         </tr>
         <tr>
           <th class="col-md-1"></th>
-          <th class="col-md-1"><input st-search="key" st-delay="300" class="input-sm form-control" placeholder="Filter by domain name" type="text"/></th>
-          <th class="col-md-1" colspan="3"></th>
+          <th class="col-md-4"><input st-search="key" st-delay="300" class="input-sm form-control" placeholder="Filter by domain name" type="text"/></th>
+          <th class="col-md-7" colspan="3"></th>
         </tr>
       </thead>
       <tr ng-repeat="domain in report.displayed_domains">
         <td class="col-md-1"><p ng-bind="domain.id+1"></p></td>
-        <td class="col-md-1"><a ng-href="#/domains/{{domain.key}}" ng-bind="domain.key"></p></td>
-        <td class="col-md-1"><p ng-bind="domain.doc_count|number"></p></td>
-        <td class="col-md-1"><p ng-bind="domain.doc_count/report.total*100|number:2"></p></td>
+        <td class="col-md-4"><a ng-href="#/domains/{{domain.key}}" ng-bind="domain.key"></p></td>
+        <td class="col-md-3"><p ng-bind="domain.doc_count|number"></p></td>
+        <td class="col-md-3"><p ng-bind="domain.doc_count/report.total*100|number:2"></p></td>
         <td class="col-md-1"><a ng-href="http://{{domain.key}}" target="_blank">Visit &rarr;</a></td>
       </tr>
       <tfoot>

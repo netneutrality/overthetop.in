@@ -46,3 +46,37 @@ ottappFilters.filter('bytes', function() {
         return (bytes / Math.pow(1024, Math.floor(number))).toFixed(precision) +  ' ' + units[number];
     }
 });
+
+/* Convert campaign code to campaign names */
+ottappFilters.filter('campaign_name', function() {
+    return function(code) {
+        switch(code) {
+        case 'logicalindian':
+            return 'Logical Indian';
+        case 'savetheinternet':
+            return 'Save The Internet';
+        case 'independent':
+            return 'Independent';
+        default:
+            return 'Unknown';
+        }
+    }
+});
+
+/* Convert domain type code to full name */
+ottappFilters.filter('domain_type', function() {
+    return function(code) {
+        switch(code) {
+        case 'academic':
+            return 'Academic';
+        case 'webmail':
+            return 'Free webmail';
+        case 'research':
+            return 'Research';
+        case 'institution':
+            return 'Institution';
+        default:
+            return 'Unknown';
+        }
+    }
+});

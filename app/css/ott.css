@@ -124,3 +124,33 @@ body {
   }
 }
 
+/* CSS classes for displaying campaign labels */
+.label-savetheinternet {
+    background: #33BD99;
+}
+.label-logicalindian {
+    background: #1D7EB0;
+}
+.label-independent {
+    background: #BD8733;
+}
+.label- {
+    background: #B00000;
+}
+
+/* CSS classes for displaying domain type labels */
+.label-academic {
+    background: #33BD99;
+}
+.label-webmail {
+    background: #1D7EB0;
+}
+.label-research {
+    background: #B00000;
+}
+.label-institution {
+    background: #BD8733;
+}
+.label- {
+    background: #EFEFEF;
+}

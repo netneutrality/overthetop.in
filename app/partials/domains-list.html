@@ -8,30 +8,32 @@
   
 <div class="panel panel-success panel-results" ng-show="report.responses">
   <div class="panel-heading">Responses sent via {{report.from_domain}}</div>
+  <div class="panel-body">
+    <div class="row">
     <table st-table="report.displayed_responses" st-safe-src="report.responses" class="table table-condensed table-responsive">
       <thead>
         <tr>
           <th class="col-md-1">#</th>
+          <th class="col-md-2">Date</th>
+          <th class="col-md-1">Campaign</th>
           <th class="col-md-2">From</th>
           <th class="col-md-5">Subject</th>
-          <th class="col-md-2">Date</th>
           <th class="col-md-1">Size</th>
-          <th class="col-md-1">Campaign</th>
         </tr>
         <tr>
-          <th class="col-md-1"></th>
+          <th class="col-md-1" colspan="3"></th>
           <th class="col-md-2"><input st-search="from_name" st-delay="300" class="input-sm form-control" placeholder="Filter by name" type="text"/></th>
           <th class="col-md-5"><input st-search="subject" st-delay="300" class="input-sm form-control" placeholder="Filter by subject" type="text"/></th>
-          <th class="col-md-1" colspan="3"></th>
+          <th class="col-md-1"></th>
         </tr>
       </thead>
       <tr ng-repeat="response in report.displayed_responses">
         <td class="col-md-1"><p ng-bind="response.idx+1"></p></td>
-        <td class="col-md-2"><a ng-href="#/stakeholder/{{response._id}}" ng-bind="response.from_name ? response.from_name : '(No name)'"></a></td> 
-        <td class="col-md-5"><a ng-href="#/stakeholder/{{response._id}}" ng-bind="response.subject ? response.subject : '(No subject)'"></a></td>
         <td class="col-md-2"><p ng-bind="response.date"></p></td>
+        <td class="col-md-1"><p ng-bind="response.campaigns|campaign_name|uppercase" class="label label-{{response.campaigns}}"></p></td>
+        <td class="col-md-2"><a ng-href="#/stakeholder/{{response._id}}" ng-bind="response.from_name ? response.from_name : '(No name)'|limitTo:32"></a></td> 
+        <td class="col-md-5"><a ng-href="#/stakeholder/{{response._id}}" ng-bind="response.subject ? response.subject : '(No subject)'"></a></td>
         <td class="col-md-1"><p ng-bind="response.size|bytes"></p></td>
-        <td class="col-md-1"><p ng-bind="response.campaigns" class="label label-success"></p></td>
       </tr>
       <tfoot>
         <tr>
@@ -41,6 +43,8 @@
         </tr>
       </tfoot>
     </table>
+    </div>
+  </div>
   <div class="panel-footer" ng-show="report.total">
     About {{report.total|number}} result{{report.total>1?'s':''}} ({{report.took}} seconds)
   </div>

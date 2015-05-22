@@ -8,14 +8,14 @@
   </ol>
 
 <div class="panel panel-success panel-results" ng-show="report.document">
-  <div class="panel-heading" ng-bind-html="report.document._source.subject"></div>
+  <div class="panel-heading" ng-bind="report.document._source.subject ? report.document._source.subject : '(No subject)'"></div>
     <table class="table table-condensed table-responsive">
-      <tr><td>From:</td><td ng-bind="report.document._source.from_name"></td></tr>
+      <tr><td>From:</td><td><span ng-bind="report.document._source.from_name ? report.document._source.from_name : '(No name)'"></span> <span class="label label-{{report.document._source.from_type}}" ng-bind="report.document._source.from_type|domain_type|uppercase"></span></td></tr>
       <tr><td>To:</td><td ng-bind="report.document._source.to"></td></tr>
       <tr ng-show="report.document._source.cc"><td>Cc:</td><td ng-bind="report.document._source.cc"></td></tr>
-      <tr><td>Subject:</td><td ng-bind-html="report.document._source.subject"></td></tr>
+      <tr><td>Subject:</td><td ng-bind-html="report.document._source.subject ? report.document._source.subject : '(No subject)'"></td></tr>
       <tr><td>Size:</td><td ng-bind="report.document._source.size|bytes"></td></tr>
-      <tr ng-show="report.document._source.campaigns"><td>Campaigns:</td><td><p ng-bind="report.document._source.campaigns" class="label label-success"></p></td></tr>
+      <tr ng-show="report.document._source.campaigns"><td>Campaigns:</td><td><p ng-bind="report.document._source.campaigns|campaign_name|uppercase" class="label label-{{report.document._source.campaigns}}"></p></td></tr>
     </table>
   <div class="panel-body">
     <div class="highlighta">

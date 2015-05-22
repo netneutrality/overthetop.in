@@ -24,15 +24,15 @@
         <tr ng-repeat="result in results.hits">
           <td class="col-md-1"><p ng-bind="$index+1"></p></td>
           <td class="col-md-1"><p ng-bind="result._source.date"></p></td>
-          <td class="col-md-1"><p ng-bind="result._source.campaigns" class="label label-success"></p></td>
-          <td class="col-md-3"><p ng-bind="result._source.from_name"></p></td>
+          <td class="col-md-1"><p ng-bind="result._source.campaigns|campaign_name|uppercase" class="label label-{{result._source.campaigns}}"></p></td>
+          <td class="col-md-3"><p ng-bind="result._source.from_name|limitTo:32"></p></td>
           <td class="col-md-5">
             <div ng-switch="result.hasOwnProperty('highlight')">
               <div ng-switch-when="true">
                 <p ng-if="result.highlight.hasOwnProperty('text')" ng-bind-html="result.highlight.text[0]|tbsp"></p>
               </div>
               <div ng-switch-default>
-                <p ng-bind-html="result._source.snippet|tbsp"></p>
+                <p ng-bind="result._source.snippet|tbsp"></p>
               </div>
             </div>
           </td>
